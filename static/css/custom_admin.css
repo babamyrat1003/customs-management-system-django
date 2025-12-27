@@ -1,0 +1,10 @@
+/* Adjust the width of the dropdowns in the admin interface */
+#id_customsoffice, #id_customspoint, #id_customsofficer, #id_violation {
+    width: 30%; /* Set the desired width */
+}
+
+/* You can also add styles for other elements as needed */
+
+.changelist-results .paginator {
+    display: flex;
+}

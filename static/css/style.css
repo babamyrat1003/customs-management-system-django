@@ -1,0 +1,286 @@
+/* Import Google Fonts */
+@import url('/static/css/css2.css');
+
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background-image: url('/static/img/back.jpg'); /* Use absolute path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #f0f0f0;
+    color: #333;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Login Wrapper */
+.login-wrapper {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    padding: 30px;
+    text-align: center;
+}
+
+/* Logo */
+.logo img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* Headings */
+h1 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #004080;
+}
+
+.sub-title {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Form Styles */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.login-form label {
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.login-form input {
+    margin-bottom: 15px;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.login-form input:focus {
+    border-color: #0073e6;
+    outline: none;
+}
+
+.login-form button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 0;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.login-form button:hover {
+    background-color: #218838;
+}
+
+/* Responsive Login */
+@media (max-width: 480px) {
+    .login-wrapper {
+        width: 90%;
+        padding: 20px;
+    }
+}
+
+/* Link styled as a button */
+.login-link {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Optional: make it span full width */
+}
+
+.login-link:hover {
+    background-color: #218838;
+}
+
+.login-button {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #218838;
+}
+
+/* Main Sections */
+.main-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.sections {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.section {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+    padding: 30px;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.section:hover {
+    transform: scale(1.05);
+    background-color: #eef;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.section h2 {
+    font-size: 1.6em;
+    color: #004080;
+    margin-bottom: 15px;
+}
+
+.section p {
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.button-link {
+    text-decoration: none;
+}
+
+.button-link button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1.1em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.button-link button:hover {
+    background-color: #218838;
+}
+
+/* Responsive Sections */
+@media (max-width: 768px) {
+    .sections {
+        flex-direction: column;
+        align-items: center;
+    }
+    .section {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+}
+
+/* Dropdown Menu */
+.has-dropdown .dropdown {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.has-dropdown:hover .dropdown {
+    display: block;
+}
+
+.dropdown a {
+    padding: 10px 20px;
+    display: block;
+    text-align: left;
+    color: #004080;
+    text-decoration: none;
+}
+
+.dropdown a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Logo Styling */
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 200px;
+    height: auto;
+    display: inline-block;
+}
+
+@media (max-width: 768px) {
+    .logo {
+        width: 80px;
+    }
+}
+
+
+/* Basic Styles for Add Page */
+.add-page-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+.error-message {
+    color: red;
+    font-size: 14px;
+}
+
+.error-message ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.error-message li {
+    margin-bottom: 5px;
+}

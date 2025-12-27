@@ -1,0 +1,104 @@
+{% extends "admin/change_form.html" %}
+{% load static %}
+{% block extrahead %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static 'css/custom_admin.css' %}">
+<script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+        console.log("JavaScript Loaded");
+        const officeSelect = document.getElementById('id_customsoffice');
+        const pointSelect = document.getElementById('id_customspoint');
+        const pointInput = document.getElementById('id_customspoint_input'); // Assuming you have an input for autocomplete
+
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        const csrftoken = getCookie('csrftoken');
+
+        function updateCustomsPoints(officeId) {
+            $.ajax({
+                url: '/get-customs-points/',
+                type: 'GET',
+                headers: {
+                    "X-CSRFToken": csrftoken
+                },
+                data: {
+                    customsoffice: officeId
+                },
+                success: function (data) {
+                    pointSelect.innerHTML = '';
+                    data.points.forEach(function (item) {
+                        const option = new Option(item.name, item.id);
+                        pointSelect.add(option);
+                    });
+                },
+                error: function (xhr, status, error) {
+                    console.error("AJAX Error:", status, error);
+                }
+            });
+        }
+
+        function autocompleteCustomsPoints(query) {
+            $.ajax({
+                url: '/autocomplete-customs-points/', // Endpoint to fetch suggestions
+                type: 'GET',
+                headers: {
+                    "X-CSRFToken": csrftoken
+                },
+                data: {
+                    search: query
+                },
+                success: function (data) {
+                    // Populate suggestions here (you may need to create a suggestion box)
+                    // This is a simple example; modify as needed to fit your UI
+                    const suggestions = document.getElementById('suggestions');
+                    suggestions.innerHTML = ''; // Clear previous suggestions
+                    data.points.forEach(function (item) {
+                        const suggestion = document.createElement('div');
+                        suggestion.innerText = item.name;
+                        suggestion.onclick = function() {
+                            pointInput.value = item.name; // Set the input value
+                            suggestions.innerHTML = ''; // Clear suggestions
+                        };
+                        suggestions.appendChild(suggestion);
+                    });
+                },
+                error: function (xhr, status, error) {
+                    console.error("Autocomplete AJAX Error:", status, error);
+                }
+            });
+        }
+
+        officeSelect.addEventListener('change', function () {
+            const officeId = officeSelect.value;
+            if (officeId) {
+                updateCustomsPoints(officeId);
+            } else {
+                pointSelect.innerHTML = '';
+            }
+        });
+
+        pointInput.addEventListener('input', function () {
+            const query = pointInput.value;
+            if (query) {
+                autocompleteCustomsPoints(query);
+            } else {
+                document.getElementById('suggestions').innerHTML = ''; // Clear suggestions
+            }
+        });
+    });
+</script>
+{% endblock %}

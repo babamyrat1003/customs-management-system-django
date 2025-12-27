@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="% static 'css/css2.css' %}">
+
+</head>
+<body>
+    <!-- Wrapper -->
+    <div class="login-wrapper">
+        <!-- Logo -->
+        <div class="logo">
+            <img src="{% static 'img/logo.png' %}" alt="logo">
+        </div>
+
+        <!-- Title -->
+        <h1>Service of Customs</h1>
+        <p class="sub-title">Customs Violation Enforcement Department</p>
+
+        <form action="{% url 'login' %}" method="POST" class="login-form">
+            {% csrf_token %}
+            
+            <!-- Display error messages if there are any -->
+            {% if form.errors %}
+                <div class="error-message">
+                    <ul>
+                        {% for error in form.non_field_errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            
+            <!-- Username Field -->
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            
+            <!-- Password Field -->
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            
+            <!-- Submit Button -->
+            <button type="submit" class="login-button">Login</button>
+        </form>
+        
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'js/select2.min.js' %}"></script>
+    <script src="{% static 'js/form.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/select2.min.css' %}">
+      
+    <link rel="stylesheet" href="{% static 'css/add_style.css' %}"> 
+    <title>Report Form</title>
+</head>
+<body>
+    <div class="form-container">
+
+        <button class="arrow-button" onclick="window.location.href='{% url 'main' %}'">
+            <span>Yza</span>
+            <img src="{% static 'img/arrow-right-circle.svg' %}" class="arrow-icon" alt="Arrow Icon">
+        </button>
+        
+
+            <h1>Data </h1>
+            <form method="post">
+                {% csrf_token %}
+                <fieldset class="group">
+
+                    <legend>General Information</legend>
+                    
+                    <div class="form-row">
+
+                        <div class="input-group">
+                            <label for="id_ish_toplum_number">1. Work Community Number:</label>
+                            {{ form.ish_toplum_number }}
+                            {% for error in form.ish_toplum_number.errors %}
+                                <span style="color: red;">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+
+                        <div class="input-group">
+                            <label for="id_protocol_number">2. Form number of the explanatory note:</label>
+                            {{ form.protocol_number }}
+                            {% for error in form.protocol_number.errors %}
+                                <span style="color: red;">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+
+                        <div class="input-group">
+                            <label for="id_report_date">3. Report Date:</label>
+                            {{ form.report_date }}
+                            {% for error in form.report_date.errors %}
+                                <span style="color: red;">{{ error }}</span>
+                            {% endfor %}
+                        </div>   
+
+                    </div>
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="id_customsoffice" class="form-label">4. Customs Office:</label>
+                            {{ form.customsoffice }}
+                            {% for error in form.customsoffice.errors %}
+                                <span class="text-danger">{{ error }}</span>
+                            {% endfor %}
+                    
+                        </div>
+
+                        <div class="input-group">
+                            <label for="id_customspoint">5. Customs Point:</label>
+                            {{ form.customspoint }}
+                            {% for error in form.customspoint.errors %}
+                                <span style="color: red;">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+                
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="id_customsofficer">6. Customs Officer:</label>
+                            {{ form.customsofficer }}
+                            {% for error in form.customsofficer.errors %}
+                                <span style="color: red;">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="id_basisfordiscovery">7. Basis for Discovery:</label>
+                            {{ form.basisfordiscovery }}
+                            {% for error in form.basisfordiscovery.errors %}
+                                <span style="color: red;">{{ error }}</span>
+                            {% endfor %}
+                        </div> 
+                        
+                        <div class="input-group">
+                            <label for="id_methodofdiscovery">8. methodofdiscovery:</label>
+                            {{ form.methodofdiscovery }}
+                            {% for error in form.methodofdiscovery.errors %}
+                                <span style="color: red;">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+
+                        <div class="input-group">
+                            <label for="id_reasonforruleviolation">9. Place of Discovery:</label>
+                            {{ form.reasonforruleviolation }}
+                            {% for error in form.reasonforruleviolation.errors %}
+                                <span style="color: red;">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+
+
+                    </div>    
+                    <div class="form-row">
+                        <div class="input-group"> 
+                            <label for="id_administration_codexes">10. Articles of the Administrative Code:</label>
+                            {{ form.administration_codexes }}
+                            {% for error in form.administration_codexes.errors %}
+                                <span style="color: red;">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+
+                        <div class="input-group">
+                            <label for="id_language_of_work_conducted">11. Language of Work Conducted:</label>
+                            {{ form.language_of_work_conducted }}
+                            {% for error in form.language_of_work_conducted.errors %}
+                                <span style="color: red;">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                </fieldset>
+                
+                <fieldset class="group">
+                    <legend>Violator</legend>
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="id_violation"> 12. Violator:</label>
+                            {{ form.violation }}
+                            {% for error in form.violation.errors %}
+                                <span style="color: red;">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="id_entry_exit_transit">13. Entry/Exit/Transit:</label>
+                            {{ form.entry_exit_transit }}
+                            {% for error in form.entry_exit_transit.errors %}
+                                <span style="color: red;">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="id_from_country">14. From Which Country?</label>
+                            {{ form.from_country }}
+                            {% for error in form.from_country.errors %}
+                                <span style="color: red;">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+
+                        <div class="input-group">
+                            <label for="id_to_country">15. To Which Country?</label>
+                            {{ form.to_country }}
+                            {% for error in form.to_country.errors %}
+                                <span style="color: red;">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="id_vehicle_brand">16. Vehicle Brand:
+                                <a href="#" class="add-btn" id="add-vehicleBrand-btn" title="Add a new vehicleBrand">+</a>
+                            </label>
+                            {{ form.vehicle_brand }}
+                            {% for error in form.vehicle_brand.errors %}
+                                <span style="color: red;">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+
+                        <div class="input-group">
+                            <label for="id_carnumber">17. Vehicle State Number:</label>
+                            {{ form.carnumber }}
+                            {% for error in form.carnumber.errors %}
+                                <span style="color: red;">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+
+                        <div class="input-group">
+                            <label for="id_transport_company">18. Transport Company Name:
+                                <a href="#" class="add-btn" id="add-transportCompanyName-btn" title="Add a new transportCompanyName">+</a>
+                            </label>
+                            {{ form.transport_company }}
+                            {% for error in form.transport_company.errors %}
+                                <span style="color: red;">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+
+                </fieldset>
+
+                <fieldset class="group">
+                    <legend>Witness</legend>
+                    
+                    {{ witness_formset.management_form }}
+                    <table id="witness-table">
+                        <thead>
+                            <tr>
+                                <th>Full Name</th>
+                                <th>Address</th>
+                                <th>Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody id="witness-table-body">
+                           
+                            {% for witness_form in witness_formset %}
+                            <tr class="witness-row">
+                                <td>
+                                    {% if witness_form.fullname.errors %}
+                                    <div class="error-message">{{ witness_form.fullname.errors }}</div>
+                                    {% endif %}
+                                    {{ witness_form.fullname }}
+                                </td>
+                                <td>
+                                    {% if witness_form.address.errors %}
+                                    <div class="error-message">{{ witness_form.address.errors }}</div>
+                                    {% endif %}
+                                    {{ witness_form.address }}
+                                </td>
+                                <td>
+                                    <button type="button" class="remove-witness-btn">Remove</button>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            {% if witness_formset.total_form_count == 0 %}
+                            <tr class="empty-witness-row">
+                                <td colspan="3" id="empty-row">No witnesses added</td>
+                            </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                    <button type="button" class="add-btn" id="add-witness-btn">+</button>
+                </fieldset>
+
+                <button type="submit" class="submit-button">Save</button>
+                
+            </form>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const witnessTableBody = document.getElementById('witness-table-body');
+            const addWitnessBtn = document.getElementById('add-witness-btn');
+        
+            // Function to handle adding a new witness row
+            function addWitnessRow() {
+                // Remove the empty row message if it exists
+                const emptyRow = document.getElementById('empty-row');
+                if (emptyRow) {
+                    emptyRow.remove();
+                }
+        
+                // Create a new row
+                const newRow = document.createElement('tr');
+                newRow.classList.add('witness-row');
+                newRow.innerHTML = `
+                    <td>
+                        <input type="text" name="witness_fullname[]" placeholder="Full Name" required>
+                    </td>
+                    <td>
+                        <input type="text" name="witness_address[]" placeholder="Address" required>
+                    </td>
+                    <td>
+                        <button type="button" class="remove-witness-btn">Remove</button>
+                    </td>
+                `;
+        
+                // Add functionality to remove the row
+                newRow.querySelector('.remove-witness-btn').addEventListener('click', function () {
+                    newRow.remove();
+                    if (witnessTableBody.children.length === 0) {
+                        showEmptyRowMessage();
+                    }
+                });
+        
+                witnessTableBody.appendChild(newRow);
+            }
+        
+            // Function to display the empty row message
+            function showEmptyRowMessage() {
+                const emptyRow = document.createElement('tr');
+                emptyRow.classList.add('empty-witness-row');
+                emptyRow.id = 'empty-row';
+                emptyRow.innerHTML = `<td colspan="3">No witnesses added</td>`;
+                witnessTableBody.appendChild(emptyRow);
+            }
+        
+            // Attach click event to the Add button
+            addWitnessBtn.addEventListener('click', addWitnessRow);
+        });
+        
+    </script>
+    
+    
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    $('#id_administration_codexes').select2({
+                        placeholder: "Select one or more codexes",
+                        allowClear: true,
+                    });
+                });
+            </script>
+            
+            
+                
+    </body>
+</html>

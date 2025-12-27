@@ -1,0 +1,9 @@
+/* Optional CSS to enhance the appearance of the modal */
+#image-modal {
+    display: none; /* Hide the modal by default */
+}
+
+#image-modal img {
+    border: 3px solid white;
+    border-radius: 8px;
+}

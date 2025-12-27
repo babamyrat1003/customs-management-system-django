@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    
+    <div class="main-container">
+        <!-- Logo -->
+        <div class="logo-container">
+            <img src="{% static 'img/logo.png' %}" alt="GKBGG Logo" class="logo">
+        </div>
+        
+        <!-- Welcome Message -->
+        <h1>GKBGG report</h1>
+        <p class="sub-title">Please select one of the options below:</p>
+        
+        <!-- Sections -->
+        <div class="sections">
+            <!-- Section 1 -->
+            <div class="section">
+                <a href="{% url 'report_form' %}" class="section-link">
+                    <h2>Enter Information</h2>
+                </a>
+            </div>
+            
+            <!-- Section 2 -->
+            <div class="section">
+                <a href="#" class="section-link">
+                    <h2>Search Information</h2>
+                </a>
+            </div>
+            
+            <!-- Section 3 -->
+            <div class="section has-dropdown">
+                <h2>Reports</h2>
+                <div class="dropdown">
+                    <a href="report1.html">Summary Report</a>
+                    <a href="report2.html">Analysis of Seized Goods by Country</a>
+                    <a href="report3.html">Analysis by Years</a>
+                    <a href="report3.html">Information on Citizens Seized More Than Once</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
